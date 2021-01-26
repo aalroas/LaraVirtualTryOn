@@ -139,7 +139,7 @@
     <!-- footer end -->
 
 
-    <!--modal popup start-->
+    {{-- <!--modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -234,7 +234,7 @@
             </div>
         </div>
     </div>
-    <!-- Quick-view modal popup end-->
+    <!-- Quick-view modal popup end--> --}}
 
 
     <!-- theme setting -->

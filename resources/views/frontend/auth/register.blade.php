@@ -34,43 +34,51 @@
             <div class="col-lg-12">
                 <h3>create account</h3>
                 <div class="theme-card">
-                    <form class="theme-form">
+                    <form action="{{route('frontend.register')}}" method="POST" class="theme-form">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="email">First Name</label>
+                                <label for="email"> Name</label>
                                 <input type="text"
                                        class="form-control"
                                        id="fname"
-                                       placeholder="First Name"
+                                       name="name"
+                                       placeholder="Name"
                                        required="">
                             </div>
-                            <div class="col-md-6">
-                                <label for="review">Last Name</label>
-                                <input type="password"
-                                       class="form-control"
-                                       id="lname"
-                                       placeholder="Last Name"
-                                       required="">
-                            </div>
-                        </div>
-                        <div class="form-row">
                             <div class="col-md-6">
                                 <label for="email">email</label>
                                 <input type="text"
                                        class="form-control"
                                        id="email"
+                                       name="email"
                                        placeholder="Email"
                                        required="">
                             </div>
+
+                        </div>
+                        <div class="form-row">
+
                             <div class="col-md-6">
                                 <label for="review">Password</label>
                                 <input type="password"
                                        class="form-control"
                                        id="review"
+                                       name="password"
                                        placeholder="Enter your password"
                                        required="">
-                            </div><a href="#"
-                               class="btn btn-solid">create Account</a>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="review">Password Confirmation</label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="review"
+                                       name="password_confirmation"
+                                       placeholder="Enter your password"
+                                       required="">
+                            </div>
+                            <button class="btn btn-solid" type="submit">create Account</button>
                         </div>
                     </form>
                 </div>

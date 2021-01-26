@@ -32,12 +32,14 @@
                 <div class="col-lg-6">
                     <h3>Login</h3>
                     <div class="theme-card">
-                        <form class="theme-form">
+                        <form action="{{route('frontend.login')}}" method="POST" class="theme-form">
+                            @csrf
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="text"
                                        class="form-control"
                                        id="email"
+                                       name="email"
                                        placeholder="Email"
                                        required="">
                             </div>
@@ -46,10 +48,11 @@
                                 <input type="password"
                                        class="form-control"
                                        id="review"
+                                       name="password"
                                        placeholder="Enter your password"
                                        required="">
-                            </div><a href="#"
-                               class="btn btn-solid">Login</a>
+                            </div><button type="submit"
+                               class="btn btn-solid">Login</button>
                         </form>
                     </div>
                 </div>
