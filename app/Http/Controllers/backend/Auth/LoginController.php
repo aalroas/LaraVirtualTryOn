@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\backend\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -63,10 +65,11 @@ class LoginController extends Controller
             if (auth()->user()->is_admin == 1) {
                 return redirect()->route('backend.index');
             } else {
+                 Auth::logout();
                 return redirect()->route('backend.login')->with('error', 'Email-Address And Password Are Wrong.');
             }
         } else {
-            return redirect()->route('backend.login')->with('error', 'Email-Address And Password Are Wrong.');
+            return redirect()->back()->with('error', 'Email-Address And Password Are Wrong.');
         }
     }
 

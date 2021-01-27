@@ -6,6 +6,13 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
 {
+
+    /**
+     * @var array
+     */
+    protected $guards = ['IsAdmin'];
+
+
     /**
      * Get the path the user should be redirected to when they are not authenticated.
      *
@@ -15,7 +22,11 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            if (in_array('IsAdmin', $this->guards)) {
+                return route('backend.login');
+            }
+
+            return route('frontend.login');
         }
     }
 }

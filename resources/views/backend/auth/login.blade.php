@@ -215,18 +215,24 @@
                                      id="top-profile"
                                      role="tabpanel"
                                      aria-labelledby="top-profile-tab">
-                                    <form class="form-horizontal auth-form">
+
+                                    @if(session('error'))
+                                    <div class="alert alert-danger"> {{ session('error') }}</div>
+                                    @endif
+
+                                    <form action="{{route('backend.login')}}" method="POST"  class="form-horizontal auth-form">
+                                        @csrf
                                         <div class="form-group">
                                             <input required=""
-                                                   name="login[username]"
+                                                   name="email"
                                                    type="email"
                                                    class="form-control"
-                                                   placeholder="Username"
+                                                   placeholder="email"
                                                    id="exampleInputEmail1">
                                         </div>
                                         <div class="form-group">
                                             <input required=""
-                                                   name="login[password]"
+                                                   name="password"
                                                    type="password"
                                                    class="form-control"
                                                    placeholder="Password">
@@ -246,19 +252,7 @@
                                             <button class="btn btn-primary"
                                                     type="submit">Login</button>
                                         </div>
-                                        <div class="form-footer">
-                                            <span>Or Login up with social platforms</span>
-                                            <ul class="social">
-                                                <li><a class="icon-facebook"
-                                                       href="#"></a></li>
-                                                <li><a class="icon-twitter"
-                                                       href="#"></a></li>
-                                                <li><a class="icon-instagram"
-                                                       href="#"></a></li>
-                                                <li><a class="icon-pinterest"
-                                                       href="#"></a></li>
-                                            </ul>
-                                        </div>
+
                                     </form>
                                 </div>
                             </div>
@@ -266,7 +260,7 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html"
+            <a href="{{route('frontend.index')}}"
                class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>back</a>
         </div>
     </div>

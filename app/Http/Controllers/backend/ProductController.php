@@ -4,7 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class ProductController extends Controller
 {
     /**
@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::all();
-        // return view('products.index',compact('products'));
+        $products = Product::limit(4)->get();
+        return view('backend.products.index', compact('products'));
     }
 
     /**

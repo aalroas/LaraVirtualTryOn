@@ -25,7 +25,8 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'body' => $this->faker->paragraph
+            'body' => $this->faker->paragraph,
+            'image' => 'image.png'
         ];
     }
 }

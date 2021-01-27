@@ -50,8 +50,12 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.','namespace' => 'backend'
         Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
         Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-        Route::group(['middleware' => 'is_admin'], function () {
-        // admin panel routes
+        Route::group(['middleware' => ['auth','is_admin']], function () {
+        Route::get('/', function (){
+            return view('backend.index');
+        })->name('index');
+
+        Route::resource('products', 'ProductController');
 
     });
 
