@@ -1,17 +1,18 @@
 @extends('backend.layouts.app')
 
 @section('custom-css')
- <!-- INCLUDE MAIN SCRIPT: -->
-    <script src='{{asset('try-on/release/JeelizNNCwidget.js')}}'></script>
+<!-- INCLUDE MAIN SCRIPT: -->
+<script src='{{asset('try-on/release/JeelizNNCwidget.js')}}'></script>
 
-    <!-- For icons adjust fame or resize canvas -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<!-- For icons adjust fame or resize canvas -->
+{{-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> --}}
 
-    <!-- Font for the header only: -->
-    {{-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> --}}
+<!-- Font for the header only: -->
+{{-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> --}}
 
-    <!-- main stylesheet: -->
-    <link rel='stylesheet' href="{{asset('try-on/css/JeeWidget.css')}}" />
+<!-- main stylesheet: -->
+<link rel='stylesheet' href="{{asset('try-on/css/JeeWidget.css')}}" />
+
 @endsection
 @section('content')
 <div class="page-body">
@@ -53,16 +54,12 @@
                                 <div class="product-hover">
                                     <ul>
 
-                                          <li>
-                                           <button type="button"
-                                                    class="btn btn-primary"
-                                                    data-toggle="modal"
-                                                    data-target="#exampleModal" onclick="main()">
+                                        <li>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#exampleModal" onclick="letsGo()">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                         </li>
-
-
 
                                         {{-- <li>
                                             <button class="btn" type="button" data-original-title="" title=""><i
@@ -71,7 +68,7 @@
                                         {{-- <li>
                                             <button class="btn" type="button" data-toggle="modal"
                                                 data-target="#{{$product->name}}" data-original-title="" title=""><i
-                                                    class="ti-trash"></i></button>
+                                            class="ti-trash"></i></button>
                                         </li> --}}
                                     </ul>
                                 </div>
@@ -100,117 +97,78 @@
     <!-- Container-fluid Ends-->
 
 </div>
+<div class="modal fade bd-example-modal-xxl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered d-flex justify-content-center"
+     role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Virtual Try On (VTO)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="vidOff()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div  width="400"  height="500"  class="modal-body">
 
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="spinner-border"
+                     role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
 
-   <div id='JeeWidget'>
-        <!-- MAIN CANVAS: -->
-        <!--
-             canvas with id='JeeWidgetCanvas' is the canvas where the VTO widget will be rendered
-             it should have CSS attribute position: absolute so that it can be resized without
-             changing the total size of the placeholder
-            -->
-        <canvas id='JeeWidgetCanvas'></canvas>
+               <div style="width: 450px !important; height: 550px !important;" width="450"  height="550"  id='JeeWidget'>
+                    <canvas  id='JeeWidgetCanvas'></canvas>
+                </div>
 
-        <div class='JeeWidgetControls JeeWidgetControlsTop'>
-            <!-- ADJUST BUTTON: -->
-            <button id='JeeWidgetAdjust'>
-                <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
-            </button>
+                <div class='JeeWidgetControls JeeWidgetControlsTop'>
+                    <!-- ADJUST BUTTON: -->
+                    <button id='JeeWidgetAdjust'>
+                        <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
+                    </button>
 
-            <!-- RESIZE WIDGET BUTTON: -->
-            <button id='buttonResizeCanvas'
-                    onclick='test_resizeCanvas();'>
-                <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Resize widget
-            </button>
-        </div>
+                </div>
 
-        <!-- CHANGE MODEL BUTTONS: -->
-        <div class='JeeWidgetControls'
-             id='JeeWidgetChangeModelContainer'>
-            <button onclick="JEEWIDGET.load('rayban_aviator_or_vertFlash')">Model 1</button>
-            <button onclick="JEEWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')">Model 2</button>
-            <button onclick="JEEWIDGET.load_modelStandalone('{{asset('try-on/glasses3D/glasses1.json')}}')">Model 3</button>
-        </div>
+                <!-- CHANGE MODEL BUTTONS: -->
+                <div class='JeeWidgetControls'
+                     id='JeeWidgetChangeModelContainer'>
+                    <button onclick="JEEWIDGET.load('rayban_aviator_or_vertFlash')">Model 1</button>
+                    <button onclick="JEEWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')">Model 2</button>
+                    <button onclick="JEEWIDGET.load_modelStandalone('{{asset('try-on/glasses3D/glasses1.json')}}')">Model 3</button>
+                </div>
 
-        <!-- BEGIN ADJUST NOTICE -->
-        <div id='JeeWidgetAdjustNotice'>
-            Move the glasses to adjust them.
-            <button class='JeeWidgetBottomButton'
-                    id='JeeWidgetAdjustExit'>Quit</button>
-        </div>
-        <!-- END AJUST NOTICE -->
+                <!-- BEGIN ADJUST NOTICE -->
+                <div id='JeeWidgetAdjustNotice'>
+                    Move the glasses to adjust them.
+                    <button class='JeeWidgetBottomButton'
+                            id='JeeWidgetAdjustExit'>Quit</button>
+                </div>
 
-        <!-- BEGIN LOADING WIDGET (not model) -->
-        <div id='JeeWidgetLoading'>
-            <div class='JeeWidgetLoadingText'>
-                LOADING...
             </div>
         </div>
-        <!-- END LOADING -->
-
     </div>
-
 </div>
-
 
 @endsection
 
 @section('custom-js')
 <script>
-    let _isResized = false;
-          function test_resizeCanvas() {
-            // halves the height:
-            let halfHeightPx = Math.round(window.innerHeight / 2).toString() + 'px';
+    // entry point:
+    function letsGo() {
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        const glassesSkus = ['blaze_round_or_bleudegrademiroir',
+            'rayban_wayfarer_havane_vert'
+        ];
+        JEEWIDGET.start({
+            // sku: 'aliexpress_wayfarer_style_brown_brown',
+            searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
+            searchImageColor: 0xeeeeee
+        }) // end JEEWIDGET.start call
+        JEEWIDGET.load(glassesSkus[getRandomInt(2)]);
+    }
 
-            const domWidget = document.getElementById('JeeWidget');
-            domWidget.style.maxHeight = (_isResized) ? 'none' : halfHeightPx;
-
-            _isResized = !_isResized;
-          }
-
-          // entry point:
-          function main() {
-
-            JEEWIDGET.start({
-              sku: 'rayban_aviator_or_vertFlash',
-              searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
-              searchImageColor: 0xeeeeee,
-              callbackReady: function(){
-                console.log('INFO: JEEWIDGET is ready :)');
-              },
-              onError: function(errorLabel){ // this function catches errors, so you can display custom integrated messages
-                alert('An error happened. errorLabel =' + errorLabel)
-                switch(errorLabel) {
-                  case 'NOFILE':
-                    // the user send an image, but it is not here
-                    break;
-
-                  case 'WRONGFILEFORMAT':
-                    // the user upload a file which is not an image or corrupted
-                    break;
-
-                  case 'INVALID_SKU':
-                    // the provided SKU does not match with a glasses model
-                    break;
-
-                  case 'FALLBACK_UNAVAILABLE':
-                    // we cannot switch to file upload mode. browser too old?
-                    break;
-
-                  case 'PLACEHOLDER_NULL_WIDTH':
-                  case 'PLACEHOLDER_NULL_HEIGHT':
-                    // Something is wrong with the placeholder
-                    // (element whose id='JeeWidget')
-                    break;
-
-                  case 'FATAL':
-                  default:
-                    // a bit error happens:(
-                    break;
-                } // end switch
-              } // end onError()
-            }) // end JEEWIDGET.start call
-          } // end main()
+    function vidOff() {
+        console.log('video');
+        JEEWIDGET.pause();
+    };
 </script>
 @endsection

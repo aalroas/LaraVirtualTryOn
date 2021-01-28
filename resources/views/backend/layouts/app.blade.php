@@ -20,8 +20,8 @@
     </div>
     </div>
 
+
     @include('backend.layouts.js')
     @yield('custom-js')
-
 </body>
 </html>
