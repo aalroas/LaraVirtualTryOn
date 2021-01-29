@@ -49,43 +49,42 @@
                     <div class="card-body product-box">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/34.jpg"
+                                <a href="#"><img src="{{asset($product->image)}}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 <div class="product-hover">
                                     <ul>
 
                                         <li>
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal" onclick="letsGo()">
-                                                <i class="fas fa-eye"></i>
+                                                data-target="#exampleModal" onclick="letsGo('{{$product->sku}}')">
+                                                <i class="fa fa-eye"></i>
                                             </button>
                                         </li>
 
-                                        {{-- <li>
-                                            <button class="btn" type="button" data-original-title="" title=""><i
-                                                    class="ti-pencil-alt"></i></button>
-                                        </li> --}}
-                                        {{-- <li>
-                                            <button class="btn" type="button" data-toggle="modal"
-                                                data-target="#{{$product->name}}" data-original-title="" title=""><i
-                                            class="ti-trash"></i></button>
-                                        </li> --}}
+                                        <li>
+                                            <a class="btn" href="{{route('backend.products.edit',$product->id)}}">
+                                                <i class="fa fa-pencil"></i> </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn" href="{{route('backend.products.destroy',$product->id)}}">
+                                                <i  class="fa fa-trash"></i></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                            {{-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div> --}}
                             <a href="#">
                                 <h6>{{$product->name}}</h6>
                             </a>
-                            <h4>$500.00 <del>$600.00</del></h4>
-                            <ul class="color-variant">
+                            <h4>${{$product->price}} <del>${{$product->old_price}}</del></h4>
+                            {{-- <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
                                 <li class="bg-light2"></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>
@@ -118,28 +117,28 @@
                     <canvas  id='JeeWidgetCanvas'></canvas>
                 </div>
 
-                <div class='JeeWidgetControls JeeWidgetControlsTop'>
+                {{-- <div class='JeeWidgetControls JeeWidgetControlsTop'>
                     <!-- ADJUST BUTTON: -->
                     <button id='JeeWidgetAdjust'>
                         <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Adjust
                     </button>
 
-                </div>
+                </div> --}}
 
                 <!-- CHANGE MODEL BUTTONS: -->
-                <div class='JeeWidgetControls'
+                {{-- <div class='JeeWidgetControls'
                      id='JeeWidgetChangeModelContainer'>
-                    <button onclick="JEEWIDGET.load('rayban_aviator_or_vertFlash')">Model 1</button>
-                    <button onclick="JEEWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')">Model 2</button>
-                    <button onclick="JEEWIDGET.load_modelStandalone('{{asset('try-on/glasses3D/glasses1.json')}}')">Model 3</button>
-                </div>
+                    <button onclick="JEEWIDGET.load('rayban_aviator_or_vertFlash')">renk 1</button>
+                    <button onclick="JEEWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')">renk 2</button>
+                    <button onclick="JEEWIDGET.load_modelStandalone('{{asset('try-on/glasses3D/glasses1.json')}}')">renk 3</button>
+                </div> --}}
 
                 <!-- BEGIN ADJUST NOTICE -->
-                <div id='JeeWidgetAdjustNotice'>
+                {{-- <div id='JeeWidgetAdjustNotice'>
                     Move the glasses to adjust them.
                     <button class='JeeWidgetBottomButton'
                             id='JeeWidgetAdjustExit'>Quit</button>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -151,21 +150,13 @@
 @section('custom-js')
 <script>
     // entry point:
-    function letsGo() {
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * Math.floor(max));
-        }
-        const glassesSkus = ['blaze_round_or_bleudegrademiroir',
-            'rayban_wayfarer_havane_vert'
-        ];
+    function letsGo(sku) {
         JEEWIDGET.start({
-            // sku: 'aliexpress_wayfarer_style_brown_brown',
+            sku: sku,
             searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
             searchImageColor: 0xeeeeee
-        }) // end JEEWIDGET.start call
-        JEEWIDGET.load(glassesSkus[getRandomInt(2)]);
+        })
     }
-
     function vidOff() {
         console.log('video');
         JEEWIDGET.pause();

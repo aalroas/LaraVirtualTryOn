@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::limit(4)->get();
+        $products = Product::all();
         return view('backend.products.index', compact('products'));
     }
 
@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // return view('products.create');
+        return view('products.create');
     }
 
     /**
@@ -36,15 +36,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate($request->all());
-
-        // $product = Product::create($request->except('image'));
-
-        // if($request->has('image')){
-
-        // }
-
-        // return view('products.index');
+        $request->validate([$request->all()]);
+        $product = Product::create($request->except('image'));
+        if ($request->hasFile('image')) {
+                $image_name = date('mdYHis') . uniqid() . $request->file('image')->getClientOriginalName();
+                $path = base_path() . '/public/products/';
+                $request->file('image')->move($path, $image_name);
+                $product->image = $path . $image_name;
+                $product->save();
+                return redirect()->back();
+        }
+        return view('products.index');
     }
 
     /**
@@ -66,7 +68,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('backend.products.edit',compact('product'));
     }
 
     /**
@@ -78,7 +80,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([$request->all()]);
+        $product->update($request->except('image'));
+        if ($request->hasFile('image')) {
+            $image_name = date('mdYHis') . uniqid() . $request->file('image')->getClientOriginalName();
+            $path = base_path() . '/public/products/';
+            $request->file('image')->move($path, $image_name);
+            $product->image = $path . $image_name;
+            $product->save();
+            return redirect()->back();
+        }
+        return view('products.index');
     }
 
     /**
