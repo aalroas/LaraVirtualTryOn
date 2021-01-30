@@ -9,7 +9,7 @@
                             <div class="subscribe">
                                 <div>
                                     <h4>KNOW IT ALL FIRST!</h4>
-                                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                                    <p>Never Miss Anything From {{ config('app.name', 'Laravel') }} By Signing Up To Our Newsletter.</p>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="footer-contant">
                                 <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
+                                    <li><i class="fa fa-map-marker"></i>{{ config('app.name', 'Laravel') }} Demo Store, Demo store India 345-659
                                     </li>
                                     <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
                                     <li><i class="fa fa-envelope-o"></i>Email Us: Support@Fiot.com</li>
@@ -930,18 +930,18 @@
                     </ul>
                 </div>
                 <div class="buy_btn">
-                    <a href="https://themeforest.net/item/multikart-responsive-ecommerce-html-template/22809967?s_rank=1"
+                    <a href="https://themeforest.net/item/{{ config('app.name', 'Laravel') }}-responsive-ecommerce-html-template/22809967?s_rank=1"
                         target="_blank" class="btn btn-block purchase_btn"><i class="fa fa-shopping-cart"
-                            aria-hidden="true"></i> purchase Multikart now!</a>
-                    <a href="https://themeforest.net/item/multikart-responsive-angular-ecommerce-template/22905358?s_rank=3"
+                            aria-hidden="true"></i> purchase {{ config('app.name', 'Laravel') }} now!</a>
+                    <a href="https://themeforest.net/item/{{ config('app.name', 'Laravel') }}-responsive-angular-ecommerce-template/22905358?s_rank=3"
                         target="_blank" class="btn btn-block purchase_btn"><img src="../assets/images/icon/angular.png"
-                            alt="" class="img-fluid"> Multikart Angular</a>
-                    <a href="https://themeforest.net/item/multikart-responsive-react-ecommerce-template/23067773?s_rank=2"
+                            alt="" class="img-fluid"> {{ config('app.name', 'Laravel') }} Angular</a>
+                    <a href="https://themeforest.net/item/{{ config('app.name', 'Laravel') }}-responsive-react-ecommerce-template/23067773?s_rank=2"
                         target="_blank" class="btn btn-block purchase_btn"><img src="../assets/images/icon/react.png"
-                            alt="" class="img-fluid"> Multikart React</a>
-                    <a href="https://themeforest.net/item/multikart-multipurpose-shopify-sections-theme/23093831?s_rank=1"
+                            alt="" class="img-fluid"> {{ config('app.name', 'Laravel') }} React</a>
+                    <a href="https://themeforest.net/item/{{ config('app.name', 'Laravel') }}-multipurpose-shopify-sections-theme/23093831?s_rank=1"
                         target="_blank" class="btn btn-block purchase_btn"><img src="../assets/images/icon/shopify.png"
-                            alt="" class="img-fluid"> Multikart Shopify</a>
+                            alt="" class="img-fluid"> {{ config('app.name', 'Laravel') }} Shopify</a>
                 </div>
             </div>
         </div>

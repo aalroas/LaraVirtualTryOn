@@ -3,7 +3,7 @@
     <div class="main-header-right row">
         <div class="main-header-left d-lg-none">
             <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded"
-                         src="../assets/images/dashboard/multikart-logo.png"
+                         src="../assets/images/dashboard/{{ config('app.name', 'Laravel') }}-logo.png"
                          alt=""></a></div>
         </div>
         <div class="mobile-sidebar">

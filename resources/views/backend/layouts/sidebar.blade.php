@@ -2,7 +2,7 @@
 <div class="page-sidebar">
     <div class="main-header-left d-none d-lg-block">
         <div class="logo-wrapper"><a href="{{route('backend.index')}}"><img class="blur-up lazyloaded"
-                     src="../assets/images/dashboard/multikart-logo.png"
+                     src="../assets/images/dashboard/{{ config('app.name', 'Laravel') }}-logo.png"
                      alt=""></a></div>
     </div>
     <div class="sidebar custom-scrollbar">
