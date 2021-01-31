@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frontend;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-class ProductController extends Controller
+class ShopController extends Controller
 {
- 
+
 
     public function index()
     {
@@ -15,7 +15,7 @@ class ProductController extends Controller
         return view('frontend.products.index', compact('products'));
     }
 
-   
+
 
     /**
      * Display the specified resource.
@@ -23,9 +23,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product,$id)
     {
-
-      return view('frontend.products.show',compact('product'))
+      $product = Product::find($id);
+      return view('frontend.products.show',compact('product'));
     }
 }

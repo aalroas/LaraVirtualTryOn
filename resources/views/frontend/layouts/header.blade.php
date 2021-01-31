@@ -36,7 +36,7 @@
                                 </a>
                             </div>
                             <div class="brand-logo">
-                                <a href="index.html"><img src="../assets/images/icon/logo/4.png"
+                                <a href="{{route('frontend.index')}}"><img width="100" height="80" src="{{asset('uploads/settings/'.GeneralSiteSettings('site_logo'))}}"
                                         class="img-fluid blur-up lazyload" alt=""></a>
                             </div>
                         </div>
@@ -49,9 +49,9 @@
                                             <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2"
                                                     aria-hidden="true"></i></div>
                                         </li> --}}
-                                        <li>
+                                        {{-- <li>
                                             <a href="#">Home</a>
-                                        </li>
+                                        </li> --}}
                                         {{-- <li>
                                             <a href="#">shop</a>
                                         </li>
@@ -283,17 +283,17 @@
                 <div class="main-menu">
                     <div class="menu-left">
                         <div class="navbar">
-                            <a href="javascript:void(0)" onclick="openNav()">
+                            {{-- <a href="javascript:void(0)" onclick="openNav()">
                                 <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                                 </div>
-                            </a>
+                            </a> --}}
                             <div id="mySidenav" class="sidenav">
-                                <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+                                {{-- <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a> --}}
                                 <nav>
-                                    <div onclick="closeNav()">
+                                    {{-- <div onclick="closeNav()">
                                         <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2"
                                                 aria-hidden="true"></i> Back</div>
-                                    </div>
+                                    </div> --}}
                                     {{-- <ul id="sub-menu" class="sm pixelstrap sm-vertical">
                                         <li>
                                             <a href="#">clothing</a>
@@ -428,7 +428,7 @@
                                 </nav>
                             </div>
                         </div>
-                        <div class="brand-logo"><a href="index.html"><img src="../assets/images/icon/logo/4.png"
+                        <div class="brand-logo"><a href="{{route('frontend.index')}}"><img width="100" height="80" src="{{asset('uploads/settings/'.GeneralSiteSettings('site_logo'))}}"
                                     class="img-fluid blur-up lazyload" alt=""></a></div>
                     </div>
                     <div class="menu-right pull-right">
@@ -441,8 +441,8 @@
                                                 aria-hidden="true"></i></div>
                                     </li>
                                     <li>
-                                        <a href="#">Home</a>
-                                        <ul>
+                                        <a href="{{route('frontend.index')}}">Home</a>
+                                        {{-- <ul>
                                             <li>
                                                 <a href="#">new demos <span class="new-tag">new</span></a>
                                                 <ul>
@@ -501,9 +501,9 @@
                                                     <li><a target="_blank" href="full-page.html">full page</a></li>
                                                 </ul>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="#">shop</a>
                                         <ul>
                                             <li><a href="category-page.html">left sidebar</a></li>
@@ -520,10 +520,10 @@
                                             <li><a href="category-page(6-grid).html">six grid</a></li>
                                             <li><a href="category-page(list-view).html">list view</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                     <li>
-                                        <a href="#">product</a>
-                                        <ul>
+                                        <a href="{{route('frontend.products')}}">product</a>
+                                        {{-- <ul>
                                             <li>
                                                 <a href="#">sidebar</a>
                                                 <ul>
@@ -563,9 +563,9 @@
                                             <li><a href="product-page(image-swatch).html">image swatch <span
                                                         class="new-tag">new</span></a></li>
                                             <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
-                                    <li class="mega" id="hover-cls"><a href="#">features
+                                    {{-- <li class="mega" id="hover-cls"><a href="#">features
                                             <div class="lable-nav">new</div>
                                         </a>
                                         <ul class="mega-menu full-mega-menu">
@@ -687,8 +687,8 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <li><a href="#">pages</a>
+                                    </li> --}}
+                                    {{-- <li><a href="#">pages</a>
                                         <ul>
                                             <li>
                                                 <a href="#">vendor <span class="new-tag">new</span></a>
@@ -737,8 +737,8 @@
                                                         class="new-tag">new</span></a></li>
                                             <li><a href="faq.html">FAQ</a></li>
                                         </ul>
-                                    </li>
-                                    <li>
+                                    </li> --}}
+                                    {{-- <li>
                                         <a href="#">blog</a>
                                         <ul>
                                             <li><a href="blog-page.html">left sidebar</a></li>
@@ -746,14 +746,14 @@
                                             <li><a href="blog(no-sidebar).html">no sidebar</a></li>
                                             <li><a href="blog-details.html">blog details</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </nav>
                         </div>
                         <div>
                             <div class="icon-nav">
                                 <ul>
-                                    <li class="onhover-div mobile-search">
+                                    {{-- <li class="onhover-div mobile-search">
                                         <div><img src="../assets/images/icon/search.png" onclick="openSearch()"
                                                 class="img-fluid blur-up lazyload" alt=""> <i class="ti-search"
                                                 onclick="openSearch()"></i></div>
@@ -779,8 +779,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li class="onhover-div mobile-setting">
+                                    </li> --}}
+                                    {{-- <li class="onhover-div mobile-setting">
                                         <div><img src="../assets/images/icon/setting.png"
                                                 class="img-fluid blur-up lazyload" alt=""> <i class="ti-settings"></i>
                                         </div>
@@ -798,8 +798,8 @@
                                                 <li><a href="#">doller</a></li>
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li class="onhover-div mobile-cart">
+                                    </li> --}}
+                                    {{-- <li class="onhover-div mobile-cart">
                                         <div><img src="../assets/images/icon/cart.png"
                                                 class="img-fluid blur-up lazyload" alt=""> <i
                                                 class="ti-shopping-cart"></i></div>
@@ -844,7 +844,7 @@
                                                         cart</a> <a href="#" class="checkout">checkout</a></div>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

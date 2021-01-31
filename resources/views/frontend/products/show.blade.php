@@ -1,272 +1,171 @@
-@extends('backend.layouts.app')
+@extends('frontend.layouts.app')
 @section('custom-css')
-  <style>
+<!-- INCLUDE MAIN SCRIPT: -->
+<script src='{{asset('try-on/release/JeelizNNCwidget.js')}}'></script>
 
-.file-drop-area {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 100%;
-    padding: 25px;
-    border: 1px dashed rgba(255, 255, 255, 0.4);
-    border-radius: 3px;
-    transition: .2s
-}
+<!-- For icons adjust fame or resize canvas -->
+{{-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> --}}
 
-.choose-file-button {
-    flex-shrink: 0;
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    padding: 8px 15px;
-    margin-right: 10px;
-    font-size: 12px;
-    text-transform: uppercase
-}
+<!-- Font for the header only: -->
+{{-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> --}}
 
-.file-message {
-    font-size: small;
-    font-weight: 300;
-    line-height: 1.4;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis
-}
+<!-- main stylesheet: -->
+<link rel='stylesheet'
+      href="{{asset('try-on/css/JeeWidget.css')}}" />
 
-.file-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    widows: 100%;
-    cursor: pointer;
-    opacity: 0
-}
-</style>
 @endsection
 @section('content')
-<div class="page-body">
-
-    <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="page-header">
+<!-- section start -->
+<section>
+    <div class="collection-wrapper">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="page-header-left">
-                        <h3>Add Products
-                            <small>{{ config('app.name', 'Laravel') }} Admin panel</small>
-                        </h3>
+                    <div class="product-slick">
+                        <div>
+                            <div class="lable-wrapper">
+                                <button style="border: none !important;background-color: transparent; "
+                                        type="button"
+                                        data-toggle="modal"
+                                        data-target="#letsGoModal"
+                                        onclick="letsGo('{{$product->sku}}')">
+                                    <span style="color:red" class="lable1">Try it now</span><span class="lable2"> VTO</span>
+                                    </i>
+                                </button>
+                            </div>
+                            <img src="{{asset($product->image)}}" style="width: 100%;height:50%;background-size: 100% 100%;"
+
+                                 class="  blur-up lazyload image_zoom_cls-0"></div>
+
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Digital</li>
-                        <li class="breadcrumb-item active">Add Product</li>
-                    </ol>
+                <div class="col-lg-6 rtl-text">
+                    <div class="product-right">
+                        <h2 class="mb-0">{{$product->name}}</h2>
+
+                        <h4><del>${{$product->old_price}}</del></h4>
+                        <h3>${{$product->price}}</h3>
+
+                        {{-- <div class="product-description border-product">
+
+                            <div class="modal fade"
+                                 id="sizemodal"
+                                 tabindex="-1"
+                                 role="dialog"
+                                 aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered"
+                                     role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"
+                                                id="exampleModalLabel">Sheer Straight Kurta</h5>
+                                            <button type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body"><img src="../assets/images/size-chart.jpg"
+                                                 alt=""
+                                                 class="img-fluid blur-up lazyload"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="size-box">
+                                <ul>
+                                    <li class="active"><a href="#">s</a></li>
+                                    <li><a href="#">m</a></li>
+                                    <li><a href="#">l</a></li>
+                                    <li><a href="#">xl</a></li>
+                                </ul>
+                            </div>
+                            <h6 class="product-title">quantity</h6>
+                            <div class="qty-box">
+                                <div class="input-group"><span class="input-group-prepend"><button type="button"
+                                                class="btn quantity-left-minus"
+                                                data-type="minus"
+                                                data-field=""><i class="ti-angle-left"></i></button> </span>
+                                    <input type="text"
+                                           name="quantity"
+                                           class="form-control input-number"
+                                           value="1">
+                                    <span class="input-group-prepend"><button type="button"
+                                                class="btn quantity-right-plus"
+                                                data-type="plus"
+                                                data-field=""><i class="ti-angle-right"></i></button></span></div>
+                            </div>
+                        </div> --}}
+                        {{-- <div class="product-buttons"><a href="#"
+                               data-toggle="modal"
+                               data-target="#addtocart"
+                               class="btn btn-solid">add to cart</a> <a href="#"
+                               class="btn btn-solid">buy now</a>
+                        </div> --}}
+                        <div class="border-product">
+                            <h6 class="product-title">product details</h6>
+                            <p> {{$product->body}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Container-fluid Ends-->
+</section>
+<!-- Section ends -->
 
-    <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row product-adding">
-
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>General</h5>
-                    </div>
-<form  id="create_product" action="{{route('backend.products.update',$product->id)}}" enctype="multipart/form-data"
-      method="post">
-    @csrf
-    @method('PUT')
-
-
-                    <div class="card-body">
-                        <div class="digital-add needs-validation">
-                            <div class="form-group">
-                                <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Title</label>
-                                <input class="form-control" name="name" type="text" value="{{$product->name}}"
-                                    required="">
-                            </div>
-                            <div class="form-group">
-                                <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
-                                    SKU</label>
-                                <input class="form-control" name="sku" type="text" value="{{$product->sku}}" required="">
-                            </div>
-                            {{-- <div class="form-group">
-                                <label class="col-form-label"><span>*</span> Categories</label>
-                                <select class="custom-select"
-                                        required="">
-                                    <option value="">--Select--</option>
-                                    <option value="1">eBooks</option>
-                                    <option value="2">Graphic Design</option>
-                                    <option value="3">3D Impact</option>
-                                    <option value="4">Application</option>
-                                    <option value="5">Websites</option>
-                                </select>
-                            </div> --}}
-                            <div class="form-group">
-                                <label class="col-form-label">Body</label>
-                                <textarea name="body" rows="5" cols="12">{{$product->body}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="validationCustom02" class="col-form-label"><span>*</span> Product
-                                    Price</label>
-                                <input class="form-control" name="price" type="text" value="{{$product->price}}"
-                                    required="">
-                            </div>
-                            <div class="form-group">
-                                <label for="validationCustom02"
-                                       class="col-form-label"><span>*</span> Product
-                                    Old Price</label>
-                                <input class="form-control"
-                                       name="old_price"
-                                       type="text"
-                                       value="{{$product->old_price}}"
-                                       required="">
-                            </div>
-                            {{-- <div class="form-group">
-                                <label class="col-form-label"><span>*</span> Status</label>
-                                <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
-                                    <label class="d-block"
-                                           for="edo-ani">
-                                        <input class="radio_animated"
-                                               id="edo-ani"
-                                               type="radio"
-                                               name="rdo-ani">
-                                        Enable
-                                    </label>
-                                    <label class="d-block"
-                                           for="edo-ani1">
-                                        <input class="radio_animated"
-                                               id="edo-ani1"
-                                               type="radio"
-                                               name="rdo-ani">
-                                        Disable
-                                    </label>
-                                </div>
-                            </div> --}}
-                            {{-- <label class="col-form-label pt-0"> Product Upload</label> --}}
-                            {{-- <form class="dropzone digits"
-                                  id="singleFileUpload"
-                                  action="https://themes.pixelstrap.com/upload.php">
-                                <div class="dz-message needsclick"><i class="fa fa-cloud-upload"></i>
-                                    <h4 class="mb-0 f-w-600">Drop files here or click to upload.</h4>
-                                </div>
-                            </form> --}}
-                        </div>
-                    </div>
-                </div>
+<div class="modal fade bd-example-modal-xxl"
+     id="letsGoModal"
+     tabindex="-1"
+     aria-labelledby="letsGoModalModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Virtual Try On (VTO)</h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        onclick="vidOff()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Image</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="digital-add needs-validation">
-                            <div class="form-group mb-0">
-                                <div class="description-sm">
-                                <img class="text-center" width="100" height="150" src="{{asset($product->image)}}">
-                                    <div class="file-drop-area"> <span class="choose-file-button">Choose Files</span> <span class="file-message">or drag and
-                                            drop files here</span> <input type="file"
-                                               class="file-input"
-                                               name="image"
-                                               accept=".jfif,.jpg,.jpeg,.png,.gif"
-                                               multiple> </div>
-                                    <div id="divImageMediaPreview"> </div>
-                                    {{-- <input type="file" id="image" name="image"> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mb-0">
-                            <div class="product-buttons text-center">
-                                <button type="submit" class="btn btn-primary">Add</button>
-                                <button type="reset"  class="btn btn-light">Discard</button>
-                            </div>
-                        </div>
-                    </div>
+            <div width="400"
+                 height="500"
+                 class="modal-body">
 
+                <div class="spinner-border"
+                     role="status">
+                    <span class="sr-only">Loading...</span>
                 </div>
-                {{-- <div class="card">
-                    <div class="card-header">
-                        <h5>Meta Data</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="digital-add needs-validation">
-                            <div class="form-group">
-                                <label for="validationCustom05"
-                                       class="col-form-label pt-0"> Meta Title</label>
-                                <input class="form-control"
-                                       id="validationCustom05"
-                                       type="text"
-                                       required="">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Meta Description</label>
-                                <textarea rows="4"
-                                          cols="12"></textarea>
-                            </div>
-                            <div class="form-group mb-0">
-                                <div class="product-buttons text-center">
-                                    <button type="button"
-                                            class="btn btn-primary">Add</button>
-                                    <button type="button"
-                                            class="btn btn-light">Discard</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+
+                <div style="width: 450px !important; height: 550px !important;"
+                     width="450"
+                     height="550"
+                     id='JeeWidget'>
+                    <canvas id='JeeWidgetCanvas'></canvas>
+                </div>
+
             </div>
-            </form>
         </div>
     </div>
-    <!-- Container-fluid Ends-->
-
 </div>
 @endsection
+
 @section('custom-js')
 <script>
-    $(document).on('change', '.file-input', function() {
-
-
-    var filesCount = $(this)[0].files.length;
-
-    var textbox = $(this).prev();
-
-    if (filesCount === 1) {
-    var fileName = $(this).val().split('\\').pop();
-    textbox.text(fileName);
-    } else {
-    textbox.text(filesCount + ' files selected');
+    function letsGo(sku) {
+        JEEWIDGET.start({
+            sku: sku,
+            searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
+            searchImageColor: 0xeeeeee
+        })
+        // JEEWIDGET.load(sku);
     }
-
-
-
-    if (typeof (FileReader) != "undefined") {
-    var dvPreview = $("#divImageMediaPreview");
-    dvPreview.html("");
-    $($(this)[0].files).each(function () {
-    var file = $(this);
-    var reader = new FileReader();
-    reader.onload = function (e) {
-    var img = $("<img />");
-    img.attr("style", "width: 150px; height:100px; padding: 10px");
-    img.attr("src", e.target.result);
-    dvPreview.append(img);
-    }
-    reader.readAsDataURL(file[0]);
-    });
-    } else {
-    alert("This browser does not support HTML5 FileReader.");
-    }
-
-
-    });
+    function vidOff() {
+        console.log('video');
+        JEEWIDGET.pause();
+    };
 </script>
 @endsection

@@ -1,5 +1,19 @@
 @extends('frontend.layouts.app')
+@section('custom-css')
+<!-- INCLUDE MAIN SCRIPT: -->
+<script src='{{asset('try-on/release/JeelizNNCwidget.js')}}'></script>
 
+<!-- For icons adjust fame or resize canvas -->
+{{-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> --}}
+
+<!-- Font for the header only: -->
+{{-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> --}}
+
+<!-- main stylesheet: -->
+<link rel='stylesheet'
+      href="{{asset('try-on/css/JeeWidget.css')}}" />
+
+@endsection
 @section('content')
     <!-- Home slider -->
     <div class="container home-slider-container">
@@ -122,7 +136,7 @@
     <!-- service end -->
 
 
-   
+
     <!-- Product slider -->
     <section class="layout9-box section-b-space ratio_asos p-t-0">
         <div class="container">
@@ -142,165 +156,111 @@
             <div class="row">
                 <div class="col">
                     <div class="product-4 product-m no-arrow">
+                    @foreach ($products as $product)
                         <div class="product-box">
                             <div class="img-block">
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img
-                                            src="../assets/images/goggles/product/1.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                <div class="lable-wrapper">
+                                    <button style="border: none !important;background-color: transparent; " type="button"
+                                            data-toggle="modal"
+                                            data-target="#letsGoModal"
+                                            onclick="letsGo('{{$product->sku}}')">
+                                        <span class="lable1">Try it now</span><span class="lable2">VTO</span>
+                                        </i>
+                                    </button>
                                 </div>
-                                <div class="cart-info">
+                                <div class="front">
+                                    <a href="{{route('frontend.product.show',$product->id)}}"><img
+                                            src="{{asset($product->image)}}" style="background-size: 100% 100%;"
+                                            class=" blur-up lazyload bg-img" alt="{{$product->name}}"></a>
+                                </div>
+                                {{-- <div class="cart-info">
                                     <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
                                             class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
                                         title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
                                         href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                             class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                        title="Compare"><i class="ti-reload" aria-hidden="true"></i></a></div>
+                                        title="Compare"><i class="ti-reload" aria-hidden="true"></i></a></div> --}}
                             </div>
                             <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                {{-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                         class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Slim Fit Cotton Shirt</h6>
+                                </div> --}}
+                                <a href="{{route('frontend.product.show',$product->id)}}">
+                                    <h6>{{$product->name}}</h6>
                                 </a>
-                                <h4>$500.00</h4>
-                                <ul class="color-variant">
+                                <h4>${{$product->price}}</h4>
+                                {{-- <ul class="color-variant">
                                     <li class="bg-light0"></li>
                                     <li class="bg-light1"></li>
                                     <li class="bg-light2"></li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
-                        <div class="product-box">
-                            <div class="img-block">
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img
-                                            src="../assets/images/goggles/product/2.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info">
-                                    <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button>
-                                    <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart"
-                                            aria-hidden="true"></i></a>
-                                    <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                            class="ti-search" aria-hidden="true"></i></a>
-                                    <a href="compare.html" title="Compare"><i class="ti-reload"
-                                            aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Slim Fit Cotton Shirt</h6>
-                                </a>
-                                <h4>$500.00 <del>$600.00</del></h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-block">
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img
-                                            src="../assets/images/goggles/product/3.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info">
-                                    <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                            class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                        title="Compare"><i class="ti-reload" aria-hidden="true"></i></a></div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Slim Fit Cotton Shirt</h6>
-                                </a>
-                                <h4>$500.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-block">
-                                <div class="lable-wrapper"><span class="lable1">new</span> <span class="lable2">30%
-                                        off</span></div>
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img
-                                            src="../assets/images/goggles/product/4.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info">
-                                    <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                            class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                        title="Compare"><i class="ti-reload" aria-hidden="true"></i></a></div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Slim Fit Cotton Shirt</h6>
-                                </a>
-                                <h4>$500.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-box">
-                            <div class="img-block">
-                                <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img
-                                            src="../assets/images/goggles/product/5.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div>
-                                <div class="cart-info">
-                                    <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
-                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a
-                                        href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                            class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                        title="Compare"><i class="ti-reload" aria-hidden="true"></i></a></div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div>
-                                <a href="product-page(no-sidebar).html">
-                                    <h6>Slim Fit Cotton Shirt</h6>
-                                </a>
-                                <h4>$500.00</h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Product slider end -->
+
+<div class="modal fade bd-example-modal-xxl"
+     id="letsGoModal"
+     tabindex="-1"
+     aria-labelledby="letsGoModalModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Virtual Try On (VTO)</h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        onclick="vidOff()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div width="400"
+                 height="500"
+                 class="modal-body">
+
+                <div class="spinner-border"
+                     role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+
+                <div style="width: 450px !important; height: 550px !important;"
+                     width="450"
+                     height="550"
+                     id='JeeWidget'>
+                    <canvas id='JeeWidgetCanvas'></canvas>
+                </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+@section('custom-js')
+<script>
+    // entry point:
+    function letsGo(sku) {
+        JEEWIDGET.start({
+            sku: sku,
+            searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
+            searchImageColor: 0xeeeeee
+        })
+        // JEEWIDGET.load(sku);
+    }
+
+    function vidOff() {
+        console.log('video');
+        JEEWIDGET.pause();
+    };
+</script>
+@endsection
+
 @endsection

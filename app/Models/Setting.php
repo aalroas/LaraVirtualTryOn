@@ -25,4 +25,6 @@ class Setting extends Model
         'site_meta_description',
         'site_meta_keywords'
     ];
+
+
 }

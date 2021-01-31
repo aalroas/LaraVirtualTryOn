@@ -22,6 +22,8 @@ Route::group(['as' => 'frontend.', 'namespace' => 'frontend'], function () {
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::get('', 'HomeController@index')->name('index');
+    Route::get('product/{id}', 'ShopController@show')->name('product.show');
+    Route::get('products', 'ShopController@index')->name('products');
 });
 
 /*

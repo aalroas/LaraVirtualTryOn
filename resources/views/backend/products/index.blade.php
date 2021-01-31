@@ -53,13 +53,13 @@
                         <div class="img-wrapper">
                             <div class="front">
                                 <a href="#"><img src="{{asset($product->image)}}"
-                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        class=" blur-up lazyload bg-img" alt=""></a>
                                 <div class="product-hover">
                                     <ul>
 
                                         <li>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal" onclick="letsGo('{{$product->sku}}')">
+                                            <button type="button"  style="border: none !important;background-color: transparent; " class="btn btn-primary" data-toggle="modal"
+                                                data-target="#letsGoModal" onclick="letsGo('{{$product->sku}}')">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </li>
@@ -110,7 +110,7 @@
     <!-- Container-fluid Ends-->
 
 </div>
-<div class="modal fade bd-example-modal-xxl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade bd-example-modal-xxl" id="letsGoModal" tabindex="-1" aria-labelledby="letsGoModalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
         <div class="modal-content">
