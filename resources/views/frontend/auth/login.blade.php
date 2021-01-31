@@ -32,7 +32,7 @@
                 <div class="col-lg-6">
                     <h3>Login</h3>
                     <div class="theme-card">
-                        @if($errors->has())
+                         @if ($errors->any())
                         <ul>
                             @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

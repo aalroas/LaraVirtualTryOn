@@ -56,6 +56,9 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.','namespace' => 'backend'
         })->name('index');
 
         Route::resource('products', 'ProductController');
+        Route::get('setting', 'SettingController@edit')->name('setting.edit');
+        Route::post('setting', 'SettingController@updateSiteInfo')->name('setting.UpdateSiteInfo');
+
 
     });
 

@@ -7,15 +7,15 @@
                     <div class="col-lg-6">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to Our store</li>
+                                <li>Welcome to Our {{env('APP_NAME','Laravel')}}</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 text-right">
                         <ul class="header-dropdown">
-                            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            </li>
+                            {{-- <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                            </li> --}}
                             <li class="onhover-dropdown mobile-account">
                                 <i class="fa fa-user" aria-hidden="true"></i> My Account
                             </li>
@@ -45,14 +45,14 @@
                                 <nav>
                                     <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
                                     <ul class="sm pixelstrap sm-horizontal">
-                                        <li>
+                                        {{-- <li>
                                             <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2"
                                                     aria-hidden="true"></i></div>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="#">Home</a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="#">shop</a>
                                         </li>
                                         <li>
@@ -66,11 +66,11 @@
                                         </li>
                                         <li>
                                             <a href="#">blog</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </nav>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <div class="icon-nav d-none d-sm-block">
                                     <ul>
                                         <li class="onhover-div mobile-search">
@@ -90,7 +90,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -294,7 +294,7 @@
                                         <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2"
                                                 aria-hidden="true"></i> Back</div>
                                     </div>
-                                    <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+                                    {{-- <ul id="sub-menu" class="sm pixelstrap sm-vertical">
                                         <li>
                                             <a href="#">clothing</a>
                                             <ul class="mega-menu clothing-menu">
@@ -424,7 +424,7 @@
                                         </li>
                                         <li><a href="#">home & decor</a></li>
                                         <li><a href="#">kitchen</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </nav>
                             </div>
                         </div>

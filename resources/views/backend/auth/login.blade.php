@@ -171,25 +171,25 @@
                         <div class="single-item">
                             <div>
                                 <div>
-                                    <h3>Welcome to {{ config('app.name', 'Laravel') }}</h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy.</p>
+                                    <h4>Welcome to {{ config('app.name', 'Laravel') }}</h4>
+                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy.</p> --}}
                                 </div>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <div>
                                     <h3>Welcome to {{ config('app.name', 'Laravel') }}</h3>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy.</p>
                                 </div>
-                            </div>
-                            <div>
+                            </div> --}}
+                            {{-- <div>
                                 <div>
                                     <h3>Welcome to {{ config('app.name', 'Laravel') }}</h3>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy.</p>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

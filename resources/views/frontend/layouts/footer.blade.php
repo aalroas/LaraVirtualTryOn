@@ -1,7 +1,7 @@
 
     <!-- footer start -->
     <footer class="footer-light">
-        <div class="light-layout">
+        {{-- <div class="light-layout">
             <div class="container">
                 <section class="small-section border-section border-top-0">
                     <div class="row">
@@ -28,10 +28,10 @@
                     </div>
                 </section>
             </div>
-        </div>
+        </div> --}}
         <section class="section-b-space light-layout">
             <div class="container">
-                <div class="row footer-theme partition-f">
+                {{-- <div class="row footer-theme partition-f">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-title footer-mobile-title">
                             <h4>about</h4>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
         <div class="sub-footer">
@@ -107,12 +107,11 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="footer-end">
-                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
-                                pixelstrap</p>
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2021  {{env('APP_NAME','laravel')}}</p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6 col-sm-12">
-                        <div class="payment-card-bottom">
+                        {{-- <div class="payment-card-bottom">
                             <ul>
                                 <li>
                                     <a href="#"><img src="../assets/images/icon/visa.png" alt=""></a>
@@ -130,7 +129,7 @@
                                     <a href="#"><img src="../assets/images/icon/discover.png" alt=""></a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -238,14 +237,14 @@
 
 
     <!-- theme setting -->
-    <a href="javascript:void(0)" onclick="openSetting()">
+    {{-- <a href="javascript:void(0)" onclick="openSetting()">
         <div class="setting-sidebar" id="setting-icon">
             <div>
                 <i class="fa fa-cog" aria-hidden="true"></i>
             </div>
         </div>
-    </a>
-    <div id="setting_box" class="setting-box">
+    </a> --}}
+    {{-- <div id="setting_box" class="setting-box">
         <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
         <div class="setting_box_body">
             <div onclick="closeSetting()">
@@ -945,7 +944,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- theme setting -->
 
 

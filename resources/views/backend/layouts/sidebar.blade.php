@@ -12,12 +12,19 @@
                      alt="#">
             </div>
             <h6 class="mt-3 f-14">{{ auth()->user()->name }}</h6>
-            <p>CEO</p>
+            {{-- <p>CEO</p> --}}
         </div>
         <ul class="sidebar-menu">
             <li><a class="sidebar-header"
                    href="{{route('backend.index')}}"><i data-feather="home"></i><span>Dashboard</span></a></li>
-            <li><a class="sidebar-header"
+                   <li><a class="sidebar-header"
+                           href="{{route('backend.products.index')}}"><i data-feather="users"></i><span>Users</span></a></li>
+                   <li><a class="sidebar-header" href="{{route('backend.products.index')}}"><i data-feather="box"></i><span>Products</span></a></li>
+                   <li><a class="sidebar-header"
+                           href="{{route('backend.products.index')}}"><i data-feather="dollar-sign"></i><span>Orders</span></a></li>
+                    <li><a class="sidebar-header"
+                           href="{{route('backend.setting.edit')}}"><i data-feather="settings"></i><span>settings</span></a></li>
+            {{-- <li><a class="sidebar-header"
                    href="#"><i data-feather="box"></i> <span>Products</span><i
                        class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
@@ -45,42 +52,43 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
-            <li><a class="sidebar-header"
+            </li> --}}
+            {{-- <li><a class="sidebar-header"
                    href="#"><i data-feather="dollar-sign"></i><span>Sales</span><i
                        class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
                     <li><a href="order.html"><i class="fa fa-circle"></i>Orders</a></li>
                     <li><a href="transactions.html"><i class="fa fa-circle"></i>Transactions</a></li>
                 </ul>
-            </li>
-            <li><a class="sidebar-header"
+            </li> --}}
+
+            {{-- <li><a class="sidebar-header"
                    href="#"><i data-feather="tag"></i><span>Coupons</span><i
                        class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
                     <li><a href="coupon-list.html"><i class="fa fa-circle"></i>List Coupons</a></li>
                     <li><a href="coupon-create.html"><i class="fa fa-circle"></i>Create Coupons </a></li>
                 </ul>
-            </li>
-            <li><a class="sidebar-header"
+            </li> --}}
+            {{-- <li><a class="sidebar-header"
                    href="#"><i data-feather="clipboard"></i><span>Pages</span><i
                        class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
                     <li><a href="pages-list.html"><i class="fa fa-circle"></i>List Page</a></li>
                     <li><a href="page-create.html"><i class="fa fa-circle"></i>Create Page</a></li>
                 </ul>
-            </li>
-            <li><a class="sidebar-header"
-                   href="media.html"><i data-feather="camera"></i><span>Media</span></a></li>
-            <li><a class="sidebar-header"
+            </li> --}}
+            {{-- <li><a class="sidebar-header"
+                   href="media.html"><i data-feather="camera"></i><span>Media</span></a></li> --}}
+            {{-- <li><a class="sidebar-header"
                    href="#"><i data-feather="align-left"></i><span>Menus</span><i
                        class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
                     <li><a href="menu-list.html"><i class="fa fa-circle"></i>Menu Lists</a></li>
                     <li><a href="create-menu.html"><i class="fa fa-circle"></i>Create Menu</a></li>
                 </ul>
-            </li>
-            <li><a class="sidebar-header"
+            </li> --}}
+            {{-- <li><a class="sidebar-header"
                    href="#"><i data-feather="user-plus"></i><span>Users</span><i
                        class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
@@ -119,14 +127,14 @@
             </li>
             <li><a class="sidebar-header"
                    href="login.html"><i data-feather="log-in"></i><span>Login</span></a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>
 <!-- Page Sidebar Ends-->
 
 <!-- Right sidebar Start-->
-<div class="right-sidebar"
+{{-- <div class="right-sidebar"
      id="right_side_bar">
     <div>
         <div class="container p-0">
@@ -214,5 +222,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Right sidebar Ends-->

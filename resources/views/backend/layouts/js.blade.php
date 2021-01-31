@@ -38,7 +38,7 @@
 <script src="{{asset('assets/js/chart/sparkline/sparkline.js')}}"></script>
 
 <!--Customizer admin-->
-<script src="{{asset('assets/js/admin-customizer.js')}}"></script>
+{{-- <script src="{{asset('assets/js/admin-customizer.js')}}"></script> --}}
 
 <!--dashboard custom js-->
 <script src="{{asset('assets/js/dashboard/default.js')}}"></script>
