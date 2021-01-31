@@ -12,6 +12,8 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     private $uploadPath = "uploads/products/";
+
     public function index()
     {
         $products = Product::all();
@@ -25,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('backend.products.create');
     }
 
     /**
@@ -39,14 +41,14 @@ class ProductController extends Controller
         $request->validate([$request->all()]);
         $product = Product::create($request->except('image'));
         if ($request->hasFile('image')) {
-                $image_name = date('mdYHis') . uniqid() . $request->file('image')->getClientOriginalName();
-                $path = base_path() . '/public/products/';
+                $image_name = date('mdYHis') . uniqid() .'.'. $request->file('image')->getClientOriginalExtension();
+                $path = $this->getUploadPath();
                 $request->file('image')->move($path, $image_name);
                 $product->image = $path . $image_name;
                 $product->save();
-                return redirect()->back();
+         return redirect(route('backend.products.index'));
         }
-        return view('products.index');
+    return redirect(route('backend.products.index'));
     }
 
     /**
@@ -83,14 +85,14 @@ class ProductController extends Controller
         $request->validate([$request->all()]);
         $product->update($request->except('image'));
         if ($request->hasFile('image')) {
-            $image_name = date('mdYHis') . uniqid() . $request->file('image')->getClientOriginalName();
-            $path = base_path() . '/public/products/';
+            $image_name = date('mdYHis') . uniqid() .'.'. $request->file('image')->getClientOriginalExtension();
+            $path = $this->getUploadPath();
             $request->file('image')->move($path, $image_name);
             $product->image = $path . $image_name;
             $product->save();
-            return redirect()->back();
+           return redirect(route('backend.products.index'));
         }
-        return view('products.index');
+            return redirect(route('backend.products.index'));
     }
 
     /**
@@ -101,6 +103,23 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        // return dd($product);
+        $product->delete();
+       return redirect(route('backend.products.index'));
+    }
+
+      // update tab of site status
+
+    public function getUploadPath()
+    {
+        return $this->uploadPath;
+    }
+
+
+    // update tab of Style Settings
+
+    public function setUploadPath($uploadPath)
+    {
+        $this->uploadPath = Config::get('app.APP_URL') . $uploadPath;
     }
 }

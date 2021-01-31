@@ -14,8 +14,8 @@
                     <nav aria-label="breadcrumb"
                          class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">login</li>
+                            <li class="breadcrumb-item"><a href="{{route('frontend.index')}}">Home</a></li>
+                            <li class="breadcrumb-item active">{{route('frontend.login')}}</li>
                         </ol>
                     </nav>
                 </div>
@@ -68,8 +68,8 @@
                     <div class="theme-card authentication-right">
                         <h6 class="title-font">Create A Account</h6>
                         <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
-                            able to order from our shop. To start shopping click register.</p><a href="#"
-                           class="btn btn-solid">Create an Account</a>
+                            able to order from our shop. To start shopping click register.</p>
+                            <a href="{{route('frontend.register')}}" class="btn btn-solid">Create an Account</a>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,50 @@
 @extends('backend.layouts.app')
+@section('custom-css')
+<style>
+    .file-drop-area {
+        position: relative;
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        padding: 25px;
+        border: 1px dashed rgba(255, 255, 255, 0.4);
+        border-radius: 3px;
+        transition: .2s
+    }
 
+    .choose-file-button {
+        flex-shrink: 0;
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        padding: 8px 15px;
+        margin-right: 10px;
+        font-size: 12px;
+        text-transform: uppercase
+    }
+
+    .file-message {
+        font-size: small;
+        font-weight: 300;
+        line-height: 1.4;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    .file-input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        widows: 100%;
+        cursor: pointer;
+        opacity: 0
+    }
+</style>
+@endsection
 @section('content')
- <div class="page-body">
+<div class="page-body">
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
@@ -29,30 +72,29 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row product-adding">
+
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h5>General</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="digital-add needs-validation">
-                            <div class="form-group">
-                                <label for="validationCustom01"
-                                       class="col-form-label pt-0"><span>*</span> Title</label>
-                                <input class="form-control"
-                                       id="validationCustom01"
-                                       type="text"
-                                       required="">
-                            </div>
-                            <div class="form-group">
-                                <label for="validationCustomtitle"
-                                       class="col-form-label pt-0"><span>*</span> SKU</label>
-                                <input class="form-control"
-                                       id="validationCustomtitle"
-                                       type="text"
-                                       required="">
-                            </div>
-                            <div class="form-group">
+                    <form id="create_product" action="{{route('backend.products.store')}}" enctype="multipart/form-data"
+                        method="post">
+                        @csrf
+
+                        <div class="card-body">
+                            <div class="digital-add needs-validation">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
+                                        Title</label>
+                                    <input class="form-control" name="name" type="text" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                        SKU</label>
+                                    <input class="form-control" name="sku" type="text" required="">
+                                </div>
+                                {{-- <div class="form-group">
                                 <label class="col-form-label"><span>*</span> Categories</label>
                                 <select class="custom-select"
                                         required="">
@@ -63,21 +105,22 @@
                                     <option value="4">Application</option>
                                     <option value="5">Websites</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Sort Summary</label>
-                                <textarea rows="5"
-                                          cols="12"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="validationCustom02"
-                                       class="col-form-label"><span>*</span> Product Price</label>
-                                <input class="form-control"
-                                       id="validationCustom02"
-                                       type="text"
-                                       required="">
-                            </div>
-                            <div class="form-group">
+                            </div> --}}
+                                <div class="form-group">
+                                    <label class="col-form-label">Body</label>
+                                    <textarea name="body" rows="5" cols="12"> </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label"><span>*</span> Product
+                                        Price</label>
+                                    <input class="form-control" name="price" type="text" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label"><span>*</span> Product
+                                        Old Price</label>
+                                    <input class="form-control" name="old_price" type="text" required="">
+                                </div>
+                                {{-- <div class="form-group">
                                 <label class="col-form-label"><span>*</span> Status</label>
                                 <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
                                     <label class="d-block"
@@ -97,38 +140,48 @@
                                         Disable
                                     </label>
                                 </div>
-                            </div>
-                            <label class="col-form-label pt-0"> Product Upload</label>
-                            <form class="dropzone digits"
+                            </div> --}}
+                                {{-- <label class="col-form-label pt-0"> Product Upload</label> --}}
+                                {{-- <form class="dropzone digits"
                                   id="singleFileUpload"
                                   action="https://themes.pixelstrap.com/upload.php">
                                 <div class="dz-message needsclick"><i class="fa fa-cloud-upload"></i>
                                     <h4 class="mb-0 f-w-600">Drop files here or click to upload.</h4>
                                 </div>
-                            </form>
+                            </form> --}}
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Add Description</h5>
+                        <h5>Image</h5>
                     </div>
                     <div class="card-body">
                         <div class="digital-add needs-validation">
                             <div class="form-group mb-0">
                                 <div class="description-sm">
-                                    <textarea id="editor1"
-                                              name="editor1"
-                                              cols="10"
-                                              rows="4"></textarea>
+                                    <div class="file-drop-area"> <span class="choose-file-button">Choose Files</span>
+                                        <span class="file-message">or drag and
+                                            drop files here</span> <input name="image" type="file" class="file-input"
+                                            accept=".jfif,.jpg,.jpeg,.png,.gif" multiple>
+                                    </div>
+                                    <div id="divImageMediaPreview"> </div>
+                                    {{-- <input type="file" id="image" name="image"> --}}
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mb-0">
+                            <div class="product-buttons text-center">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                                <a class="btn btn-light" href="{{route('backend.products.index')}}"> back </a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
                         <h5>Meta Data</h5>
                     </div>
@@ -157,11 +210,43 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
+            </form>
         </div>
     </div>
     <!-- Container-fluid Ends-->
 
 </div>
+@endsection
+@section('custom-js')
+<script>
+    $(document).on('change', '.file-input', function() {
+        var filesCount = $(this)[0].files.length;
+        var textbox = $(this).prev();
+        if (filesCount === 1) {
+            var fileName = $(this).val().split('\\').pop();
+            textbox.text(fileName);
+        } else {
+            textbox.text(filesCount + ' files selected');
+        }
+        if (typeof(FileReader) != "undefined") {
+            var dvPreview = $("#divImageMediaPreview");
+            dvPreview.html("");
+            $($(this)[0].files).each(function() {
+                var file = $(this);
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = $("<img />");
+                    img.attr("style", "width: 150px; height:100px; padding: 10px");
+                    img.attr("src", e.target.result);
+                    dvPreview.append(img);
+                }
+                reader.readAsDataURL(file[0]);
+            });
+        } else {
+            alert("This browser does not support HTML5 FileReader.");
+        }
+    });
+</script>
 @endsection

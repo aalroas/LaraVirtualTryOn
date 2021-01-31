@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Route;
  * Frontend Routes
  */
 Route::group(['as' => 'frontend.', 'namespace' => 'frontend'], function () {
-    Route::get('/', function () {
-        return view('frontend.index');
-    })->name('index');
-
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login.form');
     Route::post('login', 'Auth\LoginController@login')->name('login');;
@@ -25,7 +21,7 @@ Route::group(['as' => 'frontend.', 'namespace' => 'frontend'], function () {
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('', 'HomeController@index')->name('index');
 });
 
 /*
