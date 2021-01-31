@@ -163,18 +163,29 @@
 
 @section('custom-js')
 <script>
-    // entry point:
+    var isRuning = false;
     function letsGo(sku) {
         JEEWIDGET.start({
-            sku: sku,
+            // sku: sku,
             searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
             searchImageColor: 0xeeeeee
-        })
-        JEEWIDGET.load(sku);
+        });
+        if (!isRuning) {
+             stateChange(sku);
+        }else{
+            JEEWIDGET.load(sku);
+        }
     }
+        function stateChange(sku) {
+        setTimeout(function () {
+        JEEWIDGET.load(sku);
+        }, 5000);
+        }
 
     function vidOff() {
         console.log('video');
+        isRuning = true;
+        console.log(isRuning);
         JEEWIDGET.pause();
     };
 </script>
