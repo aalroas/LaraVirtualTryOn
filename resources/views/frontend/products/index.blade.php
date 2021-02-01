@@ -35,6 +35,7 @@
                                         </i>
                                     </button>
                                 </div>
+
                                 <div class="front">
                                     <a href="{{route('frontend.product.show',$product->id)}}"><img
                                             src="{{asset($product->image)}}" style="background-size: 100% 100%;"
@@ -47,6 +48,7 @@
                                 </a>
                                 <h4>${{$product->price}}</h4>
                             </div>
+
                         </div>
                         @endforeach
                 </div>

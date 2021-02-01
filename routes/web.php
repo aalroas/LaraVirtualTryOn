@@ -24,6 +24,15 @@ Route::group(['as' => 'frontend.', 'namespace' => 'frontend'], function () {
     Route::get('', 'HomeController@index')->name('index');
     Route::get('product/{id}', 'ShopController@show')->name('product.show');
     Route::get('products', 'ShopController@index')->name('products');
+
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('account', 'UserAccountController@account')->name('account.edit');
+        Route::get('orders', 'UserAccountController@orders')->name('orders.index');
+        Route::get('cart/{id}', 'UserAccountController@cart')->name('cart.index');
+        Route::post('new/order', 'UserAccountController@store')->name('orders.new');
+        Route::get('thanks', 'UserAccountController@thanks')->name('orders.thanks');
+    });
 });
 
 /*
@@ -49,13 +58,22 @@ Route::group(['prefix' => 'backend', 'as' => 'backend.','namespace' => 'backend'
         Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
         Route::group(['middleware' => ['auth','is_admin']], function () {
-        Route::get('/', function (){
-            return view('backend.index');
-        })->name('index');
+
+          Route::get('', 'DashboardController@index')->name('index');
 
         Route::resource('products', 'ProductController');
         Route::get('setting', 'SettingController@edit')->name('setting.edit');
         Route::post('setting', 'SettingController@updateSiteInfo')->name('setting.UpdateSiteInfo');
+        Route::get('orders', 'OrdersController@index')->name('orders.index');
+        Route::get('orders/edit/{id}', 'OrdersController@edit')->name('orders.edit');
+        Route::PUT('orders/edit/{id}/update', 'OrdersController@update')->name('orders.update');
+        Route::delete('orders/delete/{id}', 'OrdersController@destroy')->name('orders.destroy');
+
+      Route::get('users', 'UsersController@index')->name('users.index');
+        Route::get('users/edit/{id}', 'UsersController@edit')->name('users.edit');
+        Route::PUT('users/edit/{id}/update', 'UsersController@update')->name('users.update');
+        Route::delete('users/delete/{id}', 'UsersController@destroy')->name('users.destroy');
+
 
 
     });

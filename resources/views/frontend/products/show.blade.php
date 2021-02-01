@@ -95,12 +95,9 @@
                                                 data-field=""><i class="ti-angle-right"></i></button></span></div>
                             </div>
                         </div> --}}
-                        {{-- <div class="product-buttons"><a href="#"
-                               data-toggle="modal"
-                               data-target="#addtocart"
-                               class="btn btn-solid">add to cart</a> <a href="#"
-                               class="btn btn-solid">buy now</a>
-                        </div> --}}
+                        <div class="product-buttons">
+                             <a href="{{route('frontend.cart.index',$product->id)}}"  class="btn btn-solid">buy now</a>
+                        </div>
                         <div class="border-product">
                             <h6 class="product-title">product details</h6>
                             <p> {{$product->body}}</p>

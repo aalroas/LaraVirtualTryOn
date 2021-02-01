@@ -18,10 +18,10 @@
             <li><a class="sidebar-header"
                    href="{{route('backend.index')}}"><i data-feather="home"></i><span>Dashboard</span></a></li>
                    <li><a class="sidebar-header"
-                           href="{{route('backend.products.index')}}"><i data-feather="users"></i><span>Users</span></a></li>
+                           href="{{route('backend.users.index')}}"><i data-feather="users"></i><span>Users</span></a></li>
                    <li><a class="sidebar-header" href="{{route('backend.products.index')}}"><i data-feather="box"></i><span>Products</span></a></li>
                    <li><a class="sidebar-header"
-                           href="{{route('backend.products.index')}}"><i data-feather="dollar-sign"></i><span>Orders</span></a></li>
+                           href="{{route('backend.orders.index')}}"><i data-feather="dollar-sign"></i><span>Orders</span></a></li>
                     <li><a class="sidebar-header"
                            href="{{route('backend.setting.edit')}}"><i data-feather="settings"></i><span>settings</span></a></li>
             {{-- <li><a class="sidebar-header"

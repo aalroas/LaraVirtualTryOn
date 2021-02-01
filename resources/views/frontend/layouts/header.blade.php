@@ -565,6 +565,11 @@
                                             <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
                                         </ul> --}}
                                     </li>
+
+                                    @auth
+                                    <li><a href="{{route('frontend.account.edit')}}">Account</a></li>
+
+                                    @endauth
                                     {{-- <li class="mega" id="hover-cls"><a href="#">features
                                             <div class="lable-nav">new</div>
                                         </a>
