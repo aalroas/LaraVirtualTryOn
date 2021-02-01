@@ -97,6 +97,15 @@
                         </div> --}}
                         <div class="product-buttons">
                              <a href="{{route('frontend.cart.index',$product->id)}}"  class="btn btn-solid">buy now</a>
+                             <button  class="btn btn-solid"
+                                    type="button"
+                                    data-toggle="modal"
+                                    data-target="#letsGoModal"
+                                    onclick="letsGo('{{$product->sku}}')">
+                                <span
+                                      class="lable1">Try it now</span><span class="lable2"> VTO</span>
+                                </i>
+                            </button>
                         </div>
                         <div class="border-product">
                             <h6 class="product-title">product details</h6>

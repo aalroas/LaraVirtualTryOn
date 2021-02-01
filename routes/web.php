@@ -28,6 +28,7 @@ Route::group(['as' => 'frontend.', 'namespace' => 'frontend'], function () {
 
     Route::group(['middleware' => ['auth']], function () {
         Route::get('account', 'UserAccountController@account')->name('account.edit');
+        Route::put('account/update', 'UserAccountController@update')->name('account.update');
         Route::get('orders', 'UserAccountController@orders')->name('orders.index');
         Route::get('cart/{id}', 'UserAccountController@cart')->name('cart.index');
         Route::post('new/order', 'UserAccountController@store')->name('orders.new');

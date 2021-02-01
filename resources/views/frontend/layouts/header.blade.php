@@ -568,7 +568,7 @@
 
                                     @auth
                                     <li><a href="{{route('frontend.account.edit')}}">Account</a></li>
-
+                                    <li><a href="{{route('frontend.orders.index')}}">My Orders</a></li>
                                     @endauth
                                     {{-- <li class="mega" id="hover-cls"><a href="#">features
                                             <div class="lable-nav">new</div>

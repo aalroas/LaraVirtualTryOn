@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserAccountController extends Controller
 {
@@ -13,8 +15,7 @@ class UserAccountController extends Controller
 
     public function account()
     {
-        $orders = auth()->user()->orders;
-        return view('frontend.orders.index', compact('orders'));
+        return view('frontend.account');
     }
 
 
@@ -28,6 +29,26 @@ class UserAccountController extends Controller
         $product = Product::find($id);
         return view('frontend.orders.cart',compact('product'));
     }
+
+
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        $request->validate([$request->all()]);
+        $user = User::find(auth()->user()->id);
+        $user->name =  $request->name;
+        $user->email =  $request->email;
+        $user->password =  Hash::make($request->password);
+        $user->save();
+        return redirect(route('frontend.account.edit'));
+    }
+
+
 
 
     /**
